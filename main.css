@@ -1,0 +1,325 @@
+/**************************/
+/******* ROOT VARIABLE ****/
+/**************************/
+:root {
+  /* Color - Variables */
+  --color__text-primary: #fff;
+  --color__outline: #35d3b4;
+  --color__header-bg: #cc0033;
+  --color__gray: #303030;
+
+  /* Font - Variables */
+  --font__primary: "Roboto", sans-serif;
+  --ff__size-sm: 1.2rem;
+  --ff__size-md: 1.6rem;
+  --ff__size-lg: 2.4rem;
+  --ff__size-xl: 4.8rem;
+
+  /* Transition - Vaiables */
+  --transition-all-3-ease: all 0.3s ease;
+}
+
+/* Global settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font__primary);
+  color: var(--color__text-primary);
+  font-weight: 300;
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+p {
+  font-size: var(--ff__size-md);
+  line-height: 1.4;
+}
+
+/* using focused style on all for Accessibility */
+*:focus,
+a:focus {
+  outline: 5px dashed var(--color__outline);
+}
+
+/**************************/
+/******* REUSABLE EL*******/
+/**************************/
+
+.container {
+  margin: 0 auto;
+  padding: 0 3.2rem;
+  max-width: 140rem;
+}
+
+.heading-primary {
+  font-size: var(--ff__size-xl);
+  font-weight: 700;
+}
+
+.heading-secondary {
+  font-size: var(--ff__size-lg);
+  font-weight: 100;
+  margin-bottom: 1.6rem;
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+
+.grid-centered {
+  align-items: center;
+  justify-items: center;
+}
+
+/**************************/
+/******* HEADER ***********/
+/**************************/
+.header {
+  background-color: var(--color__header-bg);
+}
+
+.header__content {
+  grid-template-columns: auto 1fr auto;
+  gap: 1.3rem;
+  align-items: center;
+  padding: 1.3rem;
+}
+
+.logo {
+  background-color: var(--color__gray);
+  width: 18.1rem;
+  height: 5.1rem;
+}
+.search-bar {
+  justify-self: center;
+  width: 60%;
+
+  position: relative;
+}
+.input__search {
+  font-size: var(--ff__size-md);
+  color: var(--color__text-primary);
+  border: none;
+  width: 100%;
+  height: 5.1rem;
+  padding: 0.7rem 2.4rem;
+}
+
+.input__search,
+.header__bottom {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.input__search:focus {
+  outline: none;
+  /* creates border around input when focused */
+  box-shadow: inset 0 0 0 0.2rem var(--color__text-primary);
+}
+
+/* Removes default styling of clear button in safari and chrome */
+.input__search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Icon button positioned within search input */
+.button__icon {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 6.4rem;
+  background-image: url("./icons/search_icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header__content-right {
+  width: 18.1rem;
+}
+
+.header__bottom {
+  height: 4.4rem;
+  width: 100%;
+  align-self: end;
+}
+
+/**********************************/
+/******* SECTION - HERO ***********/
+/**********************************/
+
+.section-hero {
+  background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.9) 75%
+    ),
+    url("./images/B&W_bg.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding: 1.8rem 0 6.4rem;
+  overflow: hidden;
+
+  transition: padding 0.3s ease;
+}
+
+.hero {
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4.8rem;
+  color: var(--color__text-primary);
+}
+
+.hero__content {
+  flex: 1 1 50%;
+  transition: var(--transition-all-3-ease);
+}
+
+.hero__content-less {
+  display: none;
+}
+
+.hero p,
+.heading-primary,
+.heading-secondary {
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+.hero__right {
+  padding-left: 4.8rem;
+  flex: 1 1 45%;
+
+  transition: var(--transition-all-3-ease);
+}
+
+.hero__right img {
+  max-width: 100%;
+}
+
+/*************************************/
+/******* SECTION - PRODUCT ***********/
+/*************************************/
+
+.section-products {
+  margin-top: -4%;
+
+  transition: var(--transition-all-3-ease);
+}
+
+.cards {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+.scr-md {
+  display: grid;
+}
+
+.scr-xs {
+  display: none;
+}
+
+.card {
+  border: 1.6rem solid var(--color__text-primary);
+  border-radius: 0.7rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 100;
+  color: var(--color__text-primary);
+}
+
+/* Card dimensions with screen md and up */
+.scr-md .card {
+  height: 23.3rem;
+  max-width: 43.6rem;
+  width: 100%;
+  box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Card dimensions with screen sm and down */
+.scr-xs .card {
+  height: 8.4rem;
+  width: 100%;
+  border: none;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card__1 {
+  background-color: #35d3b4;
+}
+.card__2 {
+  background-color: #1b2191;
+}
+.card__3 {
+  background-color: #d822ee;
+}
+.card__4 {
+  display: none;
+  background-color: #057bad;
+}
+
+/*************************************/
+/******* SECTION - FOOTER ************/
+/*************************************/
+
+.footer {
+  margin-top: 4.8rem;
+  background-color: var(--color__gray);
+  color: var(--color__text-primary);
+  font-size: var(--ff__size-md);
+}
+
+.footer__wrapper {
+  grid-template-columns: repeat(2, 1fr);
+  padding: 12.8rem 20rem;
+  gap: 4.8rem;
+}
+
+.links {
+  gap: 1.2rem;
+}
+
+.footer__links-heading {
+  font-size: var(--ff__size-lg);
+  font-weight: 500;
+  margin-bottom: 1.8rem;
+}
+
+.link:link,
+.link:visited {
+  text-decoration: none;
+  font-size: var(--ff__size-md);
+  color: var(--color__text-primary);
+}
+
+.link:hover,
+.link:active {
+  text-decoration: underline;
+}
